@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserSelectionPage">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="410dp"
+        android:layout_height="700dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/userselect"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="In which way do you want to continue with ShopLink?"
+            android:id="@+id/txtPhrase"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/inter_24pt_medium"
+            android:textStyle="bold"
+            android:textColor="@color/DarkBlue"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnToSupplierReg"/>
+
+        <Button
+            android:id="@+id/btnToSupplierReg"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:text="SUPPLIER"
+            android:textSize="20sp"
+            android:textColor="@color/DarkestBlue"
+            android:fontFamily="@font/inter_28pt_extrabold"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/LightBlue"
+            android:foreground="@drawable/border_edit4"
+            app:cornerRadius = "20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnToShopReg"/>
+
+        <Button
+            android:id="@+id/btnToShopReg"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:text="SHOP"
+            android:textSize="20sp"
+            android:textColor="@color/DarkBlue"
+            android:fontFamily="@font/inter_28pt_extrabold"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/LightestBlue"
+            android:foreground="@drawable/border_edit4"
+            app:cornerRadius = "20dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnToSupplierReg"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
