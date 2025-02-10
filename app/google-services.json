@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "767512630867",
+    "project_id": "shoplink-31097",
+    "storage_bucket": "shoplink-31097.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767512630867:android:1365a343f06f3f4e5b98a6",
+        "android_client_info": {
+          "package_name": "com.example.shoplink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnfDiq07tDdXgqajYl9aiP0Aa5kB2kfZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
