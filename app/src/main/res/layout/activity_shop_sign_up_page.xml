@@ -39,7 +39,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/DarkBlue"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="40dp"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="300dp"
@@ -218,9 +218,10 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnShopRegister"
                 android:text="Register"
                 android:textSize="20sp"
+                android:foreground="@drawable/border_edit4"
                 android:textColor="@color/DarkBlue"
                 android:fontFamily="@font/inter_28pt_extrabold"
                 android:layout_marginTop="5dp"
