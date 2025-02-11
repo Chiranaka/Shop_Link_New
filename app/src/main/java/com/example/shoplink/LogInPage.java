@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -84,12 +85,16 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(this, MainActivity.class);
+                                Intent intent = new Intent(this, ShopHeader.class);
+                                Intent intentB = new Intent(this, SuppMyProductsPage.class);
+                                Intent intentF = new Intent(this, ShopFooter.class);
                                 String storedname = document.getString("businessName");
                                 intent.putExtra("messageName","Welcome "+storedname);
                                 intent.putExtra("messageEmail",email);
 
                                 startActivity(intent);
+                                startActivity(intentB);
+                                startActivity(intentF);
                                 finish();
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
@@ -113,13 +118,23 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(this, MainActivity.class);
+                                Intent intent = new Intent(this, ShopHeader.class);
 
-                                String name = document.getString("businessName");
-                                intent.putExtra("messageEmail","Welcome "+name);
+                                String storedname = document.getString("businessName");
+                                intent.putExtra("messageName","Welcome "+storedname);
                                 intent.putExtra("messageEmail",email);
-                                startActivity(intent);
+
+                                //startActivity(intent);
+
+
+                                Intent intentB = new Intent(this, SuppMyProductsPage.class);
+                                startActivity(intentB);
+
+
+                                Intent intentF = new Intent(this, ShopFooter.class);
+                                startActivity(intentF);
                                 finish();
+
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
                             }
