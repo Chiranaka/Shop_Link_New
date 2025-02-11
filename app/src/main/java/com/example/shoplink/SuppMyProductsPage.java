@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SuppMyProductsPage extends AppCompatActivity {
 
-    private Button buttonLogin;
+    private Button buttonAddNewProduct;
     Context context;
 
     @Override
@@ -24,14 +24,15 @@ public class SuppMyProductsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supp_my_products_page);
 
+
         context = this;
 
-        buttonLogin = findViewById(R.id.btnLogin);
+        buttonAddNewProduct = findViewById(R.id.btnAddNewProduct);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        buttonAddNewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, SuppMyProductsPage.class));
+                startActivity(new Intent(context, SuppAddNewProductPage.class));
 
             }
         });

@@ -85,16 +85,16 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(this, ShopHeader.class);
+                                //Intent intent = new Intent(this, ShopHeader.class);
                                 Intent intentB = new Intent(this, SuppMyProductsPage.class);
-                                Intent intentF = new Intent(this, ShopFooter.class);
-                                String storedname = document.getString("businessName");
-                                intent.putExtra("messageName","Welcome "+storedname);
-                                intent.putExtra("messageEmail",email);
 
-                                startActivity(intent);
+                                //String storedname = document.getString("businessName");
+                                //intent.putExtra("messageName","Welcome "+storedname);
+                                //intent.putExtra("messageEmail",email);
+
+                                //startActivity(intent);
                                 startActivity(intentB);
-                                startActivity(intentF);
+
                                 finish();
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
