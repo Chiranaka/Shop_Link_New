@@ -67,7 +67,6 @@ public class SupplierSignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addSupplier();
-                //startActivity(new Intent(context, LogInPage.class));
             }
         });
     }
@@ -91,13 +90,11 @@ public class SupplierSignUpPage extends AppCompatActivity {
         {
             Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
             return;
-
-
-        }else {
-
-            if (supPassword == supConfPassword){
-
-
+        }
+        else
+        {
+            if (supPassword == supConfPassword)
+            {
                 // Generate a unique supplier ID
                 String supplierId = firestore.collection("supplier").document().getId();
 
@@ -111,26 +108,32 @@ public class SupplierSignUpPage extends AppCompatActivity {
                 firestore.collection("supplier").document(supplierId)
                         .set(modelSupplier)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(SupplierSignUpPage.this, "Supplier added successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SupplierSignUpPage.this, "Supplier account created successfully!", Toast.LENGTH_SHORT).show();
                             // Clear input fields
+                            email.setText("");
+                            supplierName.setText("");
+                            businessName.setText("");
+                            contactNo.setText("");
+                            address.setText("");
+                            businessRegNo.setText("");
+                            description.setText("");
+                            password.setText("");
+                            confirmPassword.setText("");
 
                         })
                         .addOnFailureListener(e -> {
                             Log.e("Firestore", "Error adding supplier", e);
-                            Toast.makeText(SupplierSignUpPage.this, "Failed to add supplier!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SupplierSignUpPage.this, "Failed to create supplier account!", Toast.LENGTH_SHORT).show();
                         });
 
 
-            }else {
-
+            }
+            else
+            {
                 Toast.makeText(SupplierSignUpPage.this, "Passwords are not matched !", Toast.LENGTH_SHORT).show();
-
             }
 
         }
-
-
-
 
     }
 }
