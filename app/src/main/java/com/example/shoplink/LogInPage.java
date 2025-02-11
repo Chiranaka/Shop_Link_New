@@ -27,6 +27,7 @@ public class LogInPage extends AppCompatActivity {
     private Button buttonLogin;
     private FirebaseFirestore database;
     Context context;
+    boolean notsupplier = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,12 @@ public class LogInPage extends AppCompatActivity {
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LogInPage.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                 } else {
+                    
                     loginSupplier(email, password);
+                    if (notsupplier == true){
+
+                        loginShop(email, password);
+                    }
                 }
             }
         });
@@ -88,6 +94,33 @@ public class LogInPage extends AppCompatActivity {
                         }
                     } else {
                         Toast.makeText(LogInPage.this, "User not found!", Toast.LENGTH_SHORT).show();
+                        notsupplier = true;
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(LogInPage.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
+    }
+
+    private void loginShop(String email, String password) {
+        database.collection("supplier").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        for (DocumentSnapshot document : queryDocumentSnapshots) {
+                            String storedPassword = document.getString("password");
+
+                            if (storedPassword != null && storedPassword.equals(password)) {
+                                Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(this, MainActivity.class);
+                                intent.putExtra("message","Welcome "+email);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(LogInPage.this, "User not found!", Toast.LENGTH_SHORT).show();
+
                     }
                 })
                 .addOnFailureListener(e ->
