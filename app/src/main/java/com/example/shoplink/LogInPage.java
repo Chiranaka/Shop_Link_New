@@ -57,7 +57,7 @@ public class LogInPage extends AppCompatActivity {
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LogInPage.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    
+
                     loginSupplier(email, password);
                     if (notsupplier == true){
 
@@ -85,7 +85,10 @@ public class LogInPage extends AppCompatActivity {
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(this, MainActivity.class);
-                                intent.putExtra("message","Welcome "+email);
+                                String storedname = document.getString("businessName");
+                                intent.putExtra("messageName","Welcome "+storedname);
+                                intent.putExtra("messageEmail",email);
+
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -111,7 +114,10 @@ public class LogInPage extends AppCompatActivity {
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(this, MainActivity.class);
-                                intent.putExtra("message","Welcome "+email);
+
+                                String name = document.getString("businessName");
+                                intent.putExtra("messageEmail","Welcome "+name);
+                                intent.putExtra("messageEmail",email);
                                 startActivity(intent);
                                 finish();
                             } else {

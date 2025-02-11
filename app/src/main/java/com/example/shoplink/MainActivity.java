@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String messageText = intent.getStringExtra("message");
+        String messageName = intent.getStringExtra("messageName");
         TextView messageView = (TextView)findViewById(R.id.txtmessege);
-        messageView.setText(messageText);
+        messageView.setText(messageName);
 
 
     }
