@@ -13,6 +13,24 @@
         android:theme="@style/Theme.ShopLink"
         tools:targetApi="31">
         <activity
+            android:name=".SuppAddNewProductPage"
+            android:exported="false" />
+        <activity
+            android:name=".ShopFooter"
+            android:exported="false" />
+        <activity
+            android:name=".ShopHeader"
+            android:exported="false" />
+        <activity
+            android:name=".SupplierFooter"
+            android:exported="false" />
+        <activity
+            android:name=".SupplierHeader"
+            android:exported="false" />
+        <activity
+            android:name=".SuppMyProductsPage"
+            android:exported="false" />
+        <activity
             android:name=".ShopSignUpPage"
             android:exported="false" />
         <activity

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/DarkBlue"
+    android:elevation="4dp"
+    tools:context=".ShopFooter">
+
+    <!-- Home Button -->
+    <ImageButton
+        android:id="@+id/imgBtnToOrders"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/carticon"
+        android:contentDescription="Image button to orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imgBtnToChat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Orders Button -->
+
+    <!-- Add Order Button -->
+
+    <!-- Notifications Button -->
+
+    <!-- Settings Button -->
+
+    <ImageButton
+        android:id="@+id/imgBtnToChat"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:contentDescription="Image button to Message"
+        android:src="@drawable/messageicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnToOrders"
+        app:layout_constraintEnd_toStartOf="@id/imgBtnAddOrder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgBtnAddOrder"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:contentDescription="Image button to main order making menu"
+        android:src="@drawable/shopmenuicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnToChat"
+        app:layout_constraintEnd_toStartOf="@id/imgBtnToNotifications"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgBtnToNotifications"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:contentDescription="Notifications"
+        android:src="@drawable/bellicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnAddOrder"
+        app:layout_constraintEnd_toStartOf="@id/imgBtnToNewProducts"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgBtnToNewProducts"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:contentDescription="Image button to explore new products"
+        android:src="@drawable/compassicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnToNotifications"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -92,7 +92,7 @@ public class ShopSignUpPage extends AppCompatActivity {
         }
         else
         {
-            if (shopPassword == shopConfPassword)
+            if (shopPassword.equals(shopConfPassword))
             {
                 // Generate a unique shop ID
                 String shopId = firestore.collection("shop").document().getId();
