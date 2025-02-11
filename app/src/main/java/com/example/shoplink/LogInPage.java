@@ -17,7 +17,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 
 
@@ -50,28 +49,28 @@ public class LogInPage extends AppCompatActivity {
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String email = Email.getText().toString().trim();
                 String password = Password.getText().toString().trim();
 
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LogInPage.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    loginUser(email, password);
+                    loginSupplier(email, password);
                 }
             }
         });
 
         linkToReg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
+            public void onClick(View view)
             {
                 startActivity(new Intent(context, UserSelectionPage.class));
             }
         });
     }
 
-    private void loginUser(String email, String password) {
+    private void loginSupplier(String email, String password) {
         database.collection("supplier").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         for (DocumentSnapshot document : queryDocumentSnapshots) {
@@ -79,7 +78,9 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LogInPage.this, MainActivity.class)); // Redirect to HomePage
+                                Intent intent = new Intent(this, MainActivity.class);
+                                intent.putExtra("message","Welcome "+email);
+                                startActivity(intent);
                                 finish();
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
