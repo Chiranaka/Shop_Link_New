@@ -93,7 +93,7 @@ public class SupplierSignUpPage extends AppCompatActivity {
         }
         else
         {
-            if (supPassword == supConfPassword)
+            if (supPassword.equals(supConfPassword))
             {
                 // Generate a unique supplier ID
                 String supplierId = firestore.collection("supplier").document().getId();
