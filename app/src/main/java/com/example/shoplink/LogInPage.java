@@ -72,7 +72,7 @@ public class LogInPage extends AppCompatActivity {
     }
 
     private void loginUser(String email, String password) {
-        database.collection("users").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        database.collection("supplier").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         for (DocumentSnapshot document : queryDocumentSnapshots) {
                             String storedPassword = document.getString("password");
