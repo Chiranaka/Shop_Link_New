@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Intent intent = getIntent();
-        String messageName = intent.getStringExtra("messageName");
-        TextView messageView = (TextView)findViewById(R.id.txtmessege);
-        messageView.setText(messageName);
+//        Intent intent = getIntent();
+//        String messageName = intent.getStringExtra("messageName");
+//        TextView messageView = (TextView)findViewById(R.id.txtmessege);
+//        messageView.setText(messageName);
 
 
     }
