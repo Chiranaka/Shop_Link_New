@@ -24,7 +24,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -39,9 +40,11 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/DarkBlue"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -49,7 +52,10 @@
                 app:cardCornerRadius="30dp"
                 app:cardElevation="20dp"
                 android:background="@drawable/custom_edittext"
-                android:alpha="0.85" >
+                android:alpha="0.85"
+                app:layout_constraintTop_toBottomOf="@+id/txtTopic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -226,14 +232,18 @@
                 android:fontFamily="@font/inter_28pt_extrabold"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/LightBlue"
-                app:cornerRadius = "20dp"/>
+                app:cornerRadius = "20dp"
+                app:layout_constraintTop_toBottomOf="@id/card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                app:layout_constraintTop_toBottomOf="@id/btnShopRegister"
+                app:layout_constraintBottom_toBottomOf="parent">
                 <TextView
                     android:id="@+id/editText"
                     android:layout_width="wrap_content"
@@ -254,7 +264,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
