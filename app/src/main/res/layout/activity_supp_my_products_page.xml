@@ -11,6 +11,7 @@
     <!-- Include Header -->
     <include
         android:id="@+id/header"
+        tools:context=".SupplierHeader"
         layout="@layout/activity_supplier_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package com.example.shoplink;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -84,13 +86,29 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(this, MainActivity.class);
-                                String storedname = document.getString("businessName");
-                                intent.putExtra("messageName","Welcome "+storedname);
-                                intent.putExtra("messageEmail",email);
 
-                                startActivity(intent);
-                                finish();
+//                                Intent intent = new Intent(this, SupplierHeader.class);
+                             Intent intentSPP = new Intent(this, SuppMyProductsPage.class);
+//
+                              String storedname = document.getString("businessName");
+//
+//                                intentSPP.putExtra("messageName","Welcome "+storedname);
+//                                intentSPP.putExtra("messageEmail",email);
+//
+//                                //startActivity(intent);
+//                                startActivity(intentSPP);
+//
+//                                finish();
+
+                                SharedPreferences sp = getSharedPreferences("Prefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("supplierName", storedname);
+                                editor.apply();
+
+
+                                startActivity(intentSPP);
+
+
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
                             }
@@ -113,13 +131,24 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(this, MainActivity.class);
 
-                                String name = document.getString("businessName");
-                                intent.putExtra("messageEmail","Welcome "+name);
-                                intent.putExtra("messageEmail",email);
+                                Intent intentB = new Intent(this, SuppMyProductsPage.class);
+
+
+                                String storedname = document.getString("businessName");
+
+                                //intentB.putExtra("messageName","Welcome "+storedname);
+                                //intentB.putExtra("messageEmail",email);
+
+                               // startActivity(intent);
+                                startActivity(intentB);
+
+                                Intent intent = new Intent(this, ShopHeader.class);
+
                                 startActivity(intent);
-                                finish();
+
+
+
                             } else {
                                 Toast.makeText(LogInPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
                             }

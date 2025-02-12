@@ -1,7 +1,9 @@
 package com.example.shoplink;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,5 +24,10 @@ public class ShopHeader extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent intent = getIntent();
+        String messageName = intent.getStringExtra("messageName");
+        TextView messageView = (TextView)findViewById(R.id.txtShopName);
+        messageView.setText(messageName);
     }
 }
