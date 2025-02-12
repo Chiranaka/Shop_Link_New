@@ -85,6 +85,7 @@ public class LogInPage extends AppCompatActivity {
 
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(this, ShopHeader.class);
                                 Intent intentB = new Intent(this, SuppMyProductsPage.class);
 
