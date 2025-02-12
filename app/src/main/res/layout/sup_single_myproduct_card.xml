@@ -23,7 +23,7 @@
             android:background="@color/white">
 
             <TextView
-                android:id="@+id/txtProductId"
+                android:id="@+id/txtProductCode"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -50,7 +50,7 @@
                 android:textSize="14dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtProductId" />
+                app:layout_constraintTop_toBottomOf="@id/txtProductCode" />
 
             <ImageView
                 android:id="@+id/imgViewItem"

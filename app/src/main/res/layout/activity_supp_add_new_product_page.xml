@@ -221,7 +221,6 @@
                         android:hint="Simple description about
                     your Product "
                         android:ems="10"
-                        android:minLines="3"
                         android:gravity="start|top"
                         android:fontFamily="@font/inter_28pt_extrabold"
                         android:inputType="textMultiLine"
@@ -310,7 +309,7 @@
                                 android:layout_height="match_parent"
                                 android:ems="10"
                                 android:hint="Product Code"
-                                android:inputType="number"
+                                android:inputType="text"
                                 android:drawablePadding="5dp"
                                 android:fontFamily="@font/inter_24pt_medium"
                                 android:textStyle="bold"
