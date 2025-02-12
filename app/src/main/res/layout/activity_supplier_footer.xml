@@ -15,12 +15,12 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@null"
-        android:layout_marginStart="5dp"
         android:src="@drawable/mapicon"
         android:contentDescription="Image button to orders"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnToChat"/>
 
     <!-- Orders Button -->
 
@@ -34,16 +34,17 @@
         android:id="@+id/imgBtnToChat"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="13dp"
         android:background="@null"
         android:contentDescription="Image button to Message"
         android:src="@drawable/messageicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgBtnToMap"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnToProducts"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageButton
-        android:id="@+id/imgBtnToAddOrder"
+        android:id="@+id/imgBtnToProducts"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="13dp"
@@ -52,6 +53,7 @@
         android:src="@drawable/productsicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgBtnToChat"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnToOrderList"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -63,7 +65,8 @@
         android:contentDescription="Notifications"
         android:src="@drawable/orderlisticon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgBtnToAddOrder"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnToProducts"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnToNotifications"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -76,7 +79,6 @@
         android:src="@drawable/bellicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imgBtnToOrderList"
         app:layout_constraintTop_toTopOf="parent" />
 
