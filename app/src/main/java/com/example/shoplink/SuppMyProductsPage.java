@@ -22,8 +22,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SuppMyProductsPage extends AppCompatActivity {
 
-    private Button buttonAddNewProduct;
-    private ImageButton viewUserProfile;
     Context context;
 
 //    private void messegePass(String messageName) {
@@ -44,10 +42,13 @@ public class SuppMyProductsPage extends AppCompatActivity {
             return insets;
         });
 
+        //******************************************************************************************
+
         //set color to footer image buttons
         ImageButton imgBtnToProducts = findViewById(R.id.imgBtnToProducts);
         imgBtnToProducts.setBackground(new ColorDrawable(Color.parseColor("#7FC7D9")));
 
+        //******************************************************************************************
 
         SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
         String sn = sharedPreferences.getString("supplierName", "Not Found");
@@ -63,26 +64,62 @@ public class SuppMyProductsPage extends AppCompatActivity {
 //
 //            messegePass(messageName);
 
-
+        //******************************************************************************************
 
 
         context = this;
 
-        buttonAddNewProduct = findViewById(R.id.btnAddNewProduct);
-        viewUserProfile = findViewById(R.id.imgBtnToUserAcc);
 
-        buttonAddNewProduct.setOnClickListener(new View.OnClickListener() {
+        //******************************************************************************************
+
+        findViewById(R.id.btnAddNewProduct).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SuppAddNewProductPage.class));
             }
         });
 
-        viewUserProfile.setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.imgBtnToUserAcc).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SupplierUserProfileView.class));
             }
         });
+
+        findViewById(R.id.imgBtnToMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        findViewById(R.id.imgBtnToChat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        findViewById(R.id.imgBtnToProducts).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppMyProductsPage.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToOrderList).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppReceivedAcceptedOrderPage.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToNotifications).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppMyProductsPage.class));
+            }
+        });
+
     }
 }

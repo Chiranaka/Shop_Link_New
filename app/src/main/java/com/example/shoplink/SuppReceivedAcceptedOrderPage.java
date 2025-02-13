@@ -14,8 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SuppReceivedAcceptedOrderPage extends AppCompatActivity {
 
-    private ImageButton viewUserProfile;
-
     Context context;
 
     @Override
@@ -29,12 +27,50 @@ public class SuppReceivedAcceptedOrderPage extends AppCompatActivity {
             return insets;
         });
 
+        //******************************************************************************************
+
         context = this;
-        viewUserProfile = findViewById(R.id.imgBtnToUserAcc);
-        viewUserProfile.setOnClickListener(new View.OnClickListener(){
+
+        //******************************************************************************************
+        findViewById(R.id.imgBtnToUserAcc).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SupplierUserProfileView.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        findViewById(R.id.imgBtnToChat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        findViewById(R.id.imgBtnToProducts).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppMyProductsPage.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToOrderList).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppReceivedAcceptedOrderPage.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToNotifications).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SuppMyProductsPage.class));
             }
         });
     }
