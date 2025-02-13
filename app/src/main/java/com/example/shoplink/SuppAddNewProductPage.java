@@ -100,7 +100,8 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
                 TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
-                String loop = QR.getValue();
+
+                editText.setText(QR.startScan());
 
                  Handler handler = new Handler();
                  Runnable runnable;
@@ -116,6 +117,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                         }
                     };
                     handler.post(runnable); // Start checking
+
 
 
 
