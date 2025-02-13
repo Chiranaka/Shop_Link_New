@@ -3,15 +3,19 @@ package com.example.shoplink;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,6 +23,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class SuppMyProductsPage extends AppCompatActivity {
 
     private Button buttonAddNewProduct;
+    private ImageButton viewUserProfile;
     Context context;
 
 //    private void messegePass(String messageName) {
@@ -38,6 +43,11 @@ public class SuppMyProductsPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //set color to footer image buttons
+        ImageButton imgBtnToProducts = findViewById(R.id.imgBtnToProducts);
+        imgBtnToProducts.setBackground(new ColorDrawable(Color.parseColor("#7FC7D9")));
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
         String sn = sharedPreferences.getString("supplierName", "Not Found");
@@ -59,12 +69,19 @@ public class SuppMyProductsPage extends AppCompatActivity {
         context = this;
 
         buttonAddNewProduct = findViewById(R.id.btnAddNewProduct);
+        viewUserProfile = findViewById(R.id.imgBtnToUserAcc);
 
         buttonAddNewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SuppAddNewProductPage.class));
+            }
+        });
 
+        viewUserProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, SupplierUserProfileView.class));
             }
         });
     }
