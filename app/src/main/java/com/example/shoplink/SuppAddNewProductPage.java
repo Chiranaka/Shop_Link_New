@@ -3,6 +3,7 @@ package com.example.shoplink;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,9 +26,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-
-
+import com.google.zxing.integration.android.IntentIntegrator;
 
 
 public class SuppAddNewProductPage extends AppCompatActivity {
@@ -83,6 +83,25 @@ public class SuppAddNewProductPage extends AppCompatActivity {
         findViewById(R.id.btnAddNewProduct).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addProduct();
+            }
+        });
+
+
+
+        findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent qintent = new Intent(SuppAddNewProductPage.this, QRScannerActivity.class);
+                startActivity(qintent);
+
+
+
+
+                SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
+                String pc = sharedPreferences.getString("productCode", "Not Found");
+
+
                 addProduct();
             }
         });
@@ -177,8 +196,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         .set(modelProduct)
                                         .addOnSuccessListener(aVoid -> {
                                             Toast.makeText(context, "Product added successfully!", Toast.LENGTH_SHORT).show();
-                                        })
-                                        .addOnFailureListener(e -> {
+                                        })                                        .addOnFailureListener(e -> {
                                             Toast.makeText(context, "Error adding product: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                         });
                             }
