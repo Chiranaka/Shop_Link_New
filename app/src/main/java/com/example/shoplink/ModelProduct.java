@@ -2,9 +2,21 @@ package com.example.shoplink;
 
 public class ModelProduct {
 
-    private String  productName, supplyPrize, maxSellingPrize, ShipFeePerOrder, productQuality, miniQuantity, maxQuantity, description,imageUrl;
+    private String  productName;
+    private String supplyPrize;
+    private String maxSellingPrize;
+    private String ShipFeePerOrder;
+    private String productQuality;
+    private String miniQuantity;
+    private String maxQuantity;
+    private String description;
+    private String imageUrl;
 
-    public ModelProduct(String productName, String supplyPrize, String maxSellingPrize, String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity, String description, String imageUrl) {
+    private String productCode;
+
+
+
+    public ModelProduct(String productName, String supplyPrize, String maxSellingPrize, String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity, String description, String imageUrl,String productCode) {
 
         this.productName = productName;
         this.supplyPrize = supplyPrize;
@@ -15,6 +27,7 @@ public class ModelProduct {
         this.maxQuantity = maxQuantity;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -87,5 +100,13 @@ public class ModelProduct {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 }
