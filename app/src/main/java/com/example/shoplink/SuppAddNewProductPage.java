@@ -92,8 +92,13 @@ public class SuppAddNewProductPage extends AppCompatActivity {
         findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent qintent = new Intent(SuppAddNewProductPage.this, QrScanner.class);
-                startActivity(qintent);
+//                Intent qintent = new Intent(SuppAddNewProductPage.this, QrScanner.class);
+//                startActivity(qintent);
+
+                BarCodeScanner QR = new BarCodeScanner(context);
+                QR.startScan();
+
+
 
 
 
@@ -102,7 +107,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 String pc = sharedPreferences.getString("productCode", "Not Found");
 
 
-                addProduct();
+
             }
         });
 
