@@ -8,6 +8,8 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public class BarCodeScanner {
 
     public String getValue() {
@@ -27,7 +29,7 @@ public class BarCodeScanner {
         this.context = context;
     }
 
-    public void startScan() {
+    public String startScan() {
         // Set barcode scanning options
         GmsBarcodeScannerOptions options = new GmsBarcodeScannerOptions.Builder()
                 .setBarcodeFormats(
@@ -51,14 +53,19 @@ public class BarCodeScanner {
         // Create scanner with context
         GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(context, options);
 
+        AtomicReference<String> scannedValue = null;
         // Start scanning
         scanner.startScan()
                 .addOnSuccessListener(barcode -> {
                     // Process scanned barcode
-                    String scannedValue = barcode.getRawValue();
+                    scannedValue.set(barcode.getRawValue());
                     Toast.makeText(context, "QR code detected", Toast.LENGTH_SHORT).show();
-                    setValue(scannedValue);
+                    setValue(scannedValue.get());
+
                 });
+
+        return scannedValue.get();
+
 
     }
 }
