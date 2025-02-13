@@ -1,14 +1,13 @@
 package com.example.shoplink;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 public class BarCodeScanner {
 
@@ -29,7 +28,7 @@ public class BarCodeScanner {
         this.context = context;
     }
 
-    public String startScan() {
+    public void startScan() {
         // Set barcode scanning options
         GmsBarcodeScannerOptions options = new GmsBarcodeScannerOptions.Builder()
                 .setBarcodeFormats(
@@ -53,19 +52,21 @@ public class BarCodeScanner {
         // Create scanner with context
         GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(context, options);
 
-        AtomicReference<String> scannedValue = null;
         // Start scanning
         scanner.startScan()
                 .addOnSuccessListener(barcode -> {
                     // Process scanned barcode
-                    scannedValue.set(barcode.getRawValue());
+                    String scannedValue = barcode.getRawValue();
+
                     Toast.makeText(context, "QR code detected", Toast.LENGTH_SHORT).show();
-                    setValue(scannedValue.get());
+                    setValue(scannedValue);
+
+                    // Send scanned data to another activity
+                    Intent intent = new Intent(context, SuppAddNewProductPage.class);
+                    intent.putExtra("Scanned_code", scannedValue);
+                    context.startActivity(intent);
 
                 });
-
-        return scannedValue.get();
-
 
     }
 }
