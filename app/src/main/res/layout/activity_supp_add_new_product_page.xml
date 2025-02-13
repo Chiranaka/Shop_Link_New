@@ -238,7 +238,7 @@
                         android:textColor="@color/DarkBlue"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/edtTxtSearch" />
+                        app:layout_constraintTop_toBottomOf="@id/edtTxtProductDescription" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -282,7 +282,7 @@
                         android:textColor="@color/DarkBlue"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/edtTxtSearch" />
+                        app:layout_constraintTop_toBottomOf="@id/imgProduct" />
 
 
                     <LinearLayout

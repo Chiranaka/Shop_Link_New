@@ -26,7 +26,7 @@ public class SupProductAdapter extends RecyclerView.Adapter<SupProductAdapter.Pr
     @Override
     public SupProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.sup_single_myproduct_card, parent, false);
-        return new ProductViewHolder;
+        return new ProductViewHolder(view);
     }
 
     @Override
@@ -34,10 +34,9 @@ public class SupProductAdapter extends RecyclerView.Adapter<SupProductAdapter.Pr
         ModelProduct modelProduct = productList.get(position);
         holder.prodCode.setText(modelProduct.getProductName());
         holder.prodName.setText(modelProduct.getProductName());
-        holder.prodName.setText(modelProduct.getProductName());
-        holder.prodName.setText(modelProduct.getProductName());
-        holder.prodName.setText(modelProduct.getProductName());
-        holder.prodName.setText(modelProduct.getProductName());
+        holder.prodSupplyPrice.setText(modelProduct.getSupplyPrize());
+        holder.prodMaxSellPrice.setText(modelProduct.getMaxSellingPrize());
+        holder.prodShipFee.setText(modelProduct.getShipFeePerOrder());
     }
 
     @Override
@@ -56,7 +55,7 @@ public class SupProductAdapter extends RecyclerView.Adapter<SupProductAdapter.Pr
             prodSupplyPrice = itemView.findViewById(R.id.txtSupplyPrice);
             prodMaxSellPrice = itemView.findViewById(R.id.txtMaxSellPrice);
             prodShipFee = itemView.findViewById(R.id.txtShipFeePerOrder);
-            prodImg = itemView.findViewById(R.id.imgProduct);
+            prodImg = itemView.findViewById(R.id.imgViewProduct);
         }
     }
 }
