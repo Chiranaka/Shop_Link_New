@@ -19,6 +19,12 @@
         android:theme="@style/Theme.ShopLink"
         tools:targetApi="31">
         <activity
+            android:name=".SuppFullAcceptedOrderPage"
+            android:exported="false" />
+        <activity
+            android:name=".SuppFullReceivedOrderPage"
+            android:exported="false" />
+        <activity
             android:name=".SuppReceivedAcceptedOrderPage"
             android:exported="false" />
         <activity

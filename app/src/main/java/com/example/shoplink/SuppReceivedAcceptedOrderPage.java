@@ -2,6 +2,8 @@ package com.example.shoplink;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -26,6 +28,14 @@ public class SuppReceivedAcceptedOrderPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //******************************************************************************************
+
+        //set color to footer image buttons
+        ImageButton imgBtnToOrderList = findViewById(R.id.imgBtnToOrderList);
+        imgBtnToOrderList.setBackground(new ColorDrawable(Color.parseColor("#7FC7D9")));
+
+        //******************************************************************************************
 
         //******************************************************************************************
 
@@ -70,7 +80,7 @@ public class SuppReceivedAcceptedOrderPage extends AppCompatActivity {
         findViewById(R.id.imgBtnToNotifications).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, SuppMyProductsPage.class));
+
             }
         });
     }

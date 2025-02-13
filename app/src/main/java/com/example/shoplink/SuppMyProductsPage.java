@@ -117,7 +117,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         findViewById(R.id.imgBtnToNotifications).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, SuppMyProductsPage.class));
+
             }
         });
 
