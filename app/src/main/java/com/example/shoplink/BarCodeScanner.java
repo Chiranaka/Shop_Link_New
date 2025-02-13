@@ -28,7 +28,7 @@ public class BarCodeScanner {
         this.context = context;
     }
 
-    public void startScan() {
+    public void startScan(OnBarcodeScannedListener listener) {
         // Set barcode scanning options
         GmsBarcodeScannerOptions options = new GmsBarcodeScannerOptions.Builder()
                 .setBarcodeFormats(
@@ -61,10 +61,14 @@ public class BarCodeScanner {
                     Toast.makeText(context, "QR code detected", Toast.LENGTH_SHORT).show();
                     setValue(scannedValue);
 
-                    // Send scanned data to another activity
-                    Intent intent = new Intent(context, SuppAddNewProductPage.class);
-                    intent.putExtra("Scanned_code", scannedValue);
-                    context.startActivity(intent);
+                    listener.onBarcodeScanned(scannedValue);}).addOnFailureListener(e -> {
+                    Toast.makeText(context, "Scanning failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+//                    // Send scanned data to another activity
+//                    Intent intent = new Intent(context, SuppAddNewProductPage.class);
+//                    intent.putExtra("Scanned_code", scannedValue);
+//                    context.startActivity(intent);
 
                 });
 
