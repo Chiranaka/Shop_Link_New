@@ -2,7 +2,8 @@ package com.example.shoplink;
 
 public class ModelProduct {
 
-    private String  productName;
+    private String productId;
+    private String productName;
     private String supplyPrize;
     private String maxSellingPrize;
     private String ShipFeePerOrder;
@@ -15,13 +16,14 @@ public class ModelProduct {
     private String productCode;
 
 
-
-    public ModelProduct(String productName, String supplyPrize, String maxSellingPrize, String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity, String description, String imageUrl,String productCode) {
-
+    public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
+                        String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
+                        String description, String imageUrl, String productCode) {
+        this.productId = productId;
         this.productName = productName;
         this.supplyPrize = supplyPrize;
         this.maxSellingPrize = maxSellingPrize;
-        this.ShipFeePerOrder = shipFeePerOrder;
+        ShipFeePerOrder = shipFeePerOrder;
         this.productQuality = productQuality;
         this.miniQuantity = miniQuantity;
         this.maxQuantity = maxQuantity;
