@@ -20,6 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -97,8 +98,9 @@ public class SuppAddNewProductPage extends AppCompatActivity {
 
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
-                EditText qrCode = findViewById(R.id.edtTxtProdCode);
-                qrCode.setHint(QR.getValue());
+                TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
+                editText.setText(QR.getValue());
+
 
 
 
