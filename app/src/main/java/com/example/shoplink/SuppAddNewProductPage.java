@@ -36,7 +36,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
     private EditText productName, supplyPrize, maxSellingPrize, ShipFeePerOrder, productQuality, miniQuantity, maxQuantity, description, imageUrl, productCode;
     Context context;
     private FirebaseFirestore db;
-
     private ImageView imgProduct;
     private Button btntoPickProdImage;
     private Uri imageUri;
@@ -48,49 +47,49 @@ public class SuppAddNewProductPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
-        String m1 = sharedPreferences.getString("m1", "");
-        String m2 = sharedPreferences.getString("m2", "");
-        String m3 = sharedPreferences.getString("m3", "");
-        String m4 = sharedPreferences.getString("m4", "");
-        String m5 = sharedPreferences.getString("m5", "");
-        String m6 = sharedPreferences.getString("m6", "");
-        String m7 = sharedPreferences.getString("m7", "");
-        String m8 = sharedPreferences.getString("m8", "");
-        String m9 = sharedPreferences.getString("m9", "");
-        String m10 = sharedPreferences.getString("m10", "");
-
-        productName = (EditText) findViewById(R.id.edtTxtProductName);
-        productName.setText(m1);
-
-        supplyPrize = (EditText) findViewById(R.id.edtTxtSupplyPrice);
-        supplyPrize.setText(m2);
-
-        maxSellingPrize = (EditText) findViewById(R.id.edtTxtSellingPrice);
-        maxSellingPrize.setText(m3);
-
-        ShipFeePerOrder = (EditText) findViewById(R.id.edtTxtShipFeePerOrder);
-        ShipFeePerOrder.setText(m4);
-
-        productQuality = (EditText) findViewById(R.id.edtTxtAddress);
-        productQuality.setText(m5);
-
-        miniQuantity = (EditText) findViewById(R.id.edtTxtMinQty);
-        miniQuantity.setText(m6);
-
-        maxQuantity = (EditText) findViewById(R.id.edtTxtMaxQty);
-        maxQuantity.setText(m7);
-
-        description = (EditText)findViewById(R.id.edtTxtProductDescription);
-        description.setText(m8);
-
-//        imgProduct  = findViewById(R.id.imgProduct);
-//        imgProduct.setText(messageName);
-
-        productCode = (EditText)findViewById(R.id.edtTxtProdCode);
-        if(productCode.toString().isEmpty() == true){
-            productCode.setText(m10);
-        }
+//        SharedPreferences sharedPreferences = getSharedPreferences("suplierPrefs", MODE_PRIVATE);
+//        String m1 = sharedPreferences.getString("m1", "");
+//        String m2 = sharedPreferences.getString("m2", "");
+//        String m3 = sharedPreferences.getString("m3", "");
+//        String m4 = sharedPreferences.getString("m4", "");
+//        String m5 = sharedPreferences.getString("m5", "");
+//        String m6 = sharedPreferences.getString("m6", "");
+//        String m7 = sharedPreferences.getString("m7", "");
+//        String m8 = sharedPreferences.getString("m8", "");
+//        String m9 = sharedPreferences.getString("m9", "");
+//        String m10 = sharedPreferences.getString("m10", "");
+//
+//        productName = (EditText) findViewById(R.id.edtTxtProductName);
+//        productName.setText(m1);
+//
+//        supplyPrize = (EditText) findViewById(R.id.edtTxtSupplyPrice);
+//        supplyPrize.setText(m2);
+//
+//        maxSellingPrize = (EditText) findViewById(R.id.edtTxtSellingPrice);
+//        maxSellingPrize.setText(m3);
+//
+//        ShipFeePerOrder = (EditText) findViewById(R.id.edtTxtShipFeePerOrder);
+//        ShipFeePerOrder.setText(m4);
+//
+//        productQuality = (EditText) findViewById(R.id.edtTxtAddress);
+//        productQuality.setText(m5);
+//
+//        miniQuantity = (EditText) findViewById(R.id.edtTxtMinQty);
+//        miniQuantity.setText(m6);
+//
+//        maxQuantity = (EditText) findViewById(R.id.edtTxtMaxQty);
+//        maxQuantity.setText(m7);
+//
+//        description = (EditText)findViewById(R.id.edtTxtProductDescription);
+//        description.setText(m8);
+//
+////        imgProduct  = findViewById(R.id.imgProduct);
+////        imgProduct.setText(messageName);
+//
+//        productCode = (EditText)findViewById(R.id.edtTxtProdCode);
+//        if(productCode.toString().isEmpty() == true){
+//            productCode.setText(m10);
+//        }
 
 
 
@@ -164,43 +163,53 @@ public class SuppAddNewProductPage extends AppCompatActivity {
 
 
 
+
         findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Intent qintent = new Intent(SuppAddNewProductPage.this, QrScanner.class);
 //                startActivity(qintent);
 
-                SharedPreferences sp = getSharedPreferences("Prefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("m1", productName.toString() );
-                editor.putString("m2", supplyPrize.toString());
-                editor.putString("m3", maxSellingPrize.toString());
-                editor.putString("m4", ShipFeePerOrder.toString());
-                editor.putString("m5", productQuality.toString());
-                editor.putString("m6", miniQuantity.toString() );
-                editor.putString("m7", maxQuantity.toString());
-                editor.putString("m8", description.toString());
-                editor.putString("m9", imgProduct.toString());
-                editor.putString("m10", productCode.toString());
-                editor.apply();
+//                SharedPreferences sp = getSharedPreferences("suplierPrefs", MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sp.edit();
+//                editor.putString("m1", productName.toString() );
+//                editor.putString("m2", supplyPrize.toString());
+//                editor.putString("m3", maxSellingPrize.toString());
+//                editor.putString("m4", ShipFeePerOrder.toString());
+//                editor.putString("m5", productQuality.toString());
+//                editor.putString("m6", miniQuantity.toString() );
+//                editor.putString("m7", maxQuantity.toString());
+//                editor.putString("m8", description.toString());
+//                editor.putString("m9", imgProduct.toString());
+//                editor.putString("m10", productCode.toString());
+//                editor.apply();
 
-                BarCodeScanner QR = new BarCodeScanner(context);
-                QR.startScan();
+//                BarCodeScanner QR = new BarCodeScanner(context);
+//                QR.startScan();
 
+                findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Create a new BarCodeScanner instance
+                        BarCodeScanner scanner = new BarCodeScanner(SuppAddNewProductPage.this);
+                        // Start the scan and handle the result in the callback
+                        scanner.startScan(new OnBarcodeScannedListener() {
+                            @Override
+                            public void onBarcodeScanned(String scannedValue) {
+                                TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
+                                editText.setText(scannedValue);
+                            }
+                        });
+                    }
+                });
 
-
-
-
-                SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getSharedPreferences("Prefs0", MODE_PRIVATE);
                 String pc = sharedPreferences.getString("productCode", "Not Found");
-
-
 
             }
         });
 
     }
-
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
