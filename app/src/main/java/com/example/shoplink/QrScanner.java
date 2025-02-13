@@ -121,10 +121,10 @@ public class QrScanner extends AppCompatActivity {
             String rawValue = barcode.getRawValue();
             runOnUiThread(() -> Toast.makeText(QrScanner.this, "QR Code detected", Toast.LENGTH_LONG).show());
 
-            SharedPreferences qsp = getSharedPreferences("Prefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = qsp.edit();
-            editor.putString("productCode", rawValue.toString());
-            editor.apply();
+//            SharedPreferences qsp = getSharedPreferences("Prefs", MODE_PRIVATE);
+//            SharedPreferences.Editor editor = qsp.edit();
+//            editor.putString("productCode", rawValue.toString());
+//            editor.apply();
             // Optionally, stop further scanning after a successful read or process the value as needed.
         }
     }
