@@ -206,8 +206,11 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                             public void onSuccess(Uri uri) {
                                 String downloadUrl = uri.toString();
 
+                                // Generate a unique supplier ID
+                                String productId = db.collection("product").document().getId();
                                 // Create the product model with the image download URL
                                 ModelProduct modelProduct = new ModelProduct(
+                                        productId,
                                         SproductName,
                                         SsupplyPrize,
                                         SmaxSellingPrize,
@@ -219,7 +222,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         downloadUrl,
                                         SproductCode
                                 );
-                                ModelSupplierProduct modelSupplierProduct = new ModelSupplierProduct();
 
                                 // Save the product data in Firestore
                                 db.collection("products")
