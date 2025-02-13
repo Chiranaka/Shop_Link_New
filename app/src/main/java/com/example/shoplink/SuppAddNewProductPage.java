@@ -92,7 +92,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
         findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent qintent = new Intent(SuppAddNewProductPage.this, QRScannerActivity.class);
+                Intent qintent = new Intent(SuppAddNewProductPage.this, QrScanner.class);
                 startActivity(qintent);
 
 
