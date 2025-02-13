@@ -97,6 +97,8 @@ public class SuppAddNewProductPage extends AppCompatActivity {
 
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
+                EditText qrCode = findViewById(R.id.edtTxtProdCode);
+                qrCode.setText(QR.getValue());
 
 
 

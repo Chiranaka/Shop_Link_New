@@ -1,6 +1,7 @@
 package com.example.shoplink;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
@@ -8,6 +9,16 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
 public class BarCodeScanner {
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String value;
 
     private final Context context;
 
@@ -45,15 +56,8 @@ public class BarCodeScanner {
                 .addOnSuccessListener(barcode -> {
                     // Process scanned barcode
                     String scannedValue = barcode.getRawValue();
-                    System.out.println("Scanned: " + scannedValue);
-                })
-                .addOnFailureListener(e -> {
-                    // Handle error
-                    System.err.println("Scanning failed: " + e.getMessage());
-                })
-                .addOnCanceledListener(() -> {
-                    // Handle scan cancel
-                    System.out.println("Scan canceled.");
+                    Toast.makeText(context, "QR code detected", Toast.LENGTH_SHORT).show();
+                    setValue(scannedValue);
                 });
 
     }
