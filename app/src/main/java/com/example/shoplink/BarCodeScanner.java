@@ -11,14 +11,14 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 public class BarCodeScanner {
 
     public String getValue() {
-        return value;
+        return qrvalue;
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this.qrvalue = value;
     }
 
-    public String value;
+    public String qrvalue;
 
     private final Context context;
 

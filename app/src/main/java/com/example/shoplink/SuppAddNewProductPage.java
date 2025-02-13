@@ -98,7 +98,8 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
                 EditText qrCode = findViewById(R.id.edtTxtProdCode);
-                qrCode.setText(QR.getValue());
+                qrCode.setHint(QR.getValue());
+
 
 
 
@@ -193,9 +194,8 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         Sdescription,
                                         downloadUrl,
                                         SproductCode
-
-
                                 );
+                                ModelSupplierProduct modelSupplierProduct = new ModelSupplierProduct();
 
                                 // Save the product data in Firestore
                                 db.collection("products")
