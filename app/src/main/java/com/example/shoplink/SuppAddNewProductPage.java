@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -101,12 +102,22 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
                 String loop = QR.getValue();
 
-                while (loop == "")
-                {
-                    QR.getValue();
-                    editText.setText(QR.getValue());
-                    loop = QR.getValue();
-                }
+                 Handler handler = new Handler();
+                 Runnable runnable;
+                    runnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            String value = QR.getValue();
+                            if (!value.isEmpty()) {  // Stop checking when a value is received
+                                editText.setText(value);
+                            } else {
+                                handler.postDelayed(this, 500); // Re-run after 500ms
+                            }
+                        }
+                    };
+                    handler.post(runnable); // Start checking
+
+
 
 
 
