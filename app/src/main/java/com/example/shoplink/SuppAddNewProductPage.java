@@ -54,6 +54,23 @@ public class SuppAddNewProductPage extends AppCompatActivity {
             return insets;
         });
 
+        BarCodeScanner QR = new BarCodeScanner(context);
+
+        TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
+
+
+
+        new Thread(() -> {
+            String value;
+            do {
+                value = QR.getValue();
+            } while (value.isEmpty());
+
+            String finalValue = value;
+            runOnUiThread(() -> editText.setText(finalValue));
+        }).start();
+
+
         db = FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference("Product_images");
 
@@ -99,32 +116,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
 
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
-                TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
-
-                editText.setText(QR.startScan());
-
-                 Handler handler = new Handler();
-                 Runnable runnable;
-                    runnable = new Runnable() {
-                        @Override
-                        public void run() {
-                            String value = QR.getValue();
-                            if (!value.isEmpty()) {  // Stop checking when a value is received
-                                editText.setText(value);
-                            } else {
-                                handler.postDelayed(this, 500); // Re-run after 500ms
-                            }
-                        }
-                    };
-                    handler.post(runnable); // Start checking
-
-
-
-
-
-
-
-
 
 
 
