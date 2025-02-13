@@ -99,7 +99,16 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
                 TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
-                editText.setText(QR.getValue());
+                String loop = QR.getValue();
+
+                while (loop == "")
+                {
+                    QR.getValue();
+                    editText.setText(QR.getValue());
+                    loop = QR.getValue();
+                }
+
+
 
 
 
