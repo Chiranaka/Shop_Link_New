@@ -47,28 +47,38 @@ public class SuppAddNewProductPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+//        BarCodeScanner QR = new BarCodeScanner(context);
+//
+//        TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
+//
+//
+//
+//        new Thread(() -> {
+//            String value;
+//            do {
+//                value = QR.getValue();
+//            } while (value.isEmpty());
+//
+//            String finalValue = value;
+//            runOnUiThread(() -> editText.setText(finalValue));
+//        }).start();
+
+
         setContentView(R.layout.activity_supp_add_new_product_page);
+
+        Intent intent = getIntent();
+        String messageName = intent.getStringExtra("Scanned_code");
+        TextInputEditText messageView = findViewById(R.id.edtTxtProdCode);
+        messageView.setText(messageName);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        BarCodeScanner QR = new BarCodeScanner(context);
 
-        TextInputEditText editText = findViewById(R.id.edtTxtProdCode);
-
-
-
-        new Thread(() -> {
-            String value;
-            do {
-                value = QR.getValue();
-            } while (value.isEmpty());
-
-            String finalValue = value;
-            runOnUiThread(() -> editText.setText(finalValue));
-        }).start();
 
 
         db = FirebaseFirestore.getInstance();
@@ -113,7 +123,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
             public void onClick(View view) {
 //                Intent qintent = new Intent(SuppAddNewProductPage.this, QrScanner.class);
 //                startActivity(qintent);
-
                 BarCodeScanner QR = new BarCodeScanner(context);
                 QR.startScan();
 
