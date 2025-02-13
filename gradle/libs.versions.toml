@@ -21,6 +21,7 @@ firebaseCrashlyticsBuildtools = "3.0.3"
 barcodeScanning = "17.0.2"
 guava = "33.4.0-jre"
 barcodeScanningVersion = "17.3.0"
+playServicesCodeScanner = "16.1.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -43,6 +44,7 @@ firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "fireb
 barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version = "17.3.0" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "barcodeScanningVersion" }
+play-services-code-scanner = { group = "com.google.android.gms", name = "play-services-code-scanner", version.ref = "playServicesCodeScanner" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

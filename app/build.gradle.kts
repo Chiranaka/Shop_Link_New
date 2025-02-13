@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.barcode.scanning)
     implementation(libs.guava)
     implementation(libs.mlkit.barcode.scanning)
+    implementation(libs.play.services.code.scanner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
