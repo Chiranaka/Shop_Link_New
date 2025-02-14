@@ -16,7 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ShopOrderSelectingPage extends AppCompatActivity {
+public class ShopMyOrdersPage extends AppCompatActivity {
 
     private Context context;
 
@@ -24,7 +24,7 @@ public class ShopOrderSelectingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_shop_order_selecting_page);
+        setContentView(R.layout.activity_shop_my_orders_page);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,7 +42,7 @@ public class ShopOrderSelectingPage extends AppCompatActivity {
         //******************************************************************************************
 
         //set color to footer image buttons
-        ImageButton imgBtnToProducts = findViewById(R.id.imgBtnAddOrder);
+        ImageButton imgBtnToProducts = findViewById(R.id.imgBtnToOrders);
         imgBtnToProducts.setBackground(new ColorDrawable(Color.parseColor("#7FC7D9")));
 
         //******************************************************************************************
@@ -93,7 +93,7 @@ public class ShopOrderSelectingPage extends AppCompatActivity {
         findViewById(R.id.imgBtnAddOrder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, SuppMyProductsPage.class));
+                startActivity(new Intent(context, ShopOrderSelectingPage.class));
                 finish();
             }
         });
@@ -111,7 +111,5 @@ public class ShopOrderSelectingPage extends AppCompatActivity {
 
             }
         });
-
-
     }
 }

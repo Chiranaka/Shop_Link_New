@@ -1,0 +1,110 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightestBlue"
+    tools:context=".ShopMyOrdersPage">
+
+    <!-- Include Header -->
+    <include
+        android:id="@+id/header"
+        layout="@layout/activity_shop_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Main Content -->
+    <ScrollView
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/footer">
+
+        <!-- Add your main content here -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/LightestBlue">
+
+            <EditText
+                android:id="@+id/edtTxtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_edit2"
+                android:drawableLeft="@drawable/searchicon2"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:ems="10"
+                android:hint="  Search"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/DarkBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/inter_28pt_extrabold"
+                android:text="My Orders"
+                android:textColor="@color/DarkBlue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtTxtSearch" />
+
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/filtericon"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/edtTxtSearch"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <Spinner
+                android:id="@+id/spnSort"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_edit3"
+                app:layout_constraintEnd_toStartOf="@id/imgSearch"
+                app:layout_constraintTop_toBottomOf="@id/edtTxtSearch" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMyOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- Include Footer -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/activity_shop_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

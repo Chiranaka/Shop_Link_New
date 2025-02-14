@@ -72,6 +72,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         setContentView(R.layout.activity_supp_my_products_page);
 
 
+
         // Create a handler to handle UI updates from the background thread
         handler = new Handler(new Handler.Callback() {
             @Override
@@ -108,6 +109,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
                 }
             }
         }).start();
+
 
 
 
