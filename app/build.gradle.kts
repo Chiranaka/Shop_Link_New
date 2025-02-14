@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.guava)
     implementation(libs.mlkit.barcode.scanning)
     implementation(libs.play.services.code.scanner)
+    implementation(libs.play.services.base)
+    implementation(libs.play.services.tflite.java)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

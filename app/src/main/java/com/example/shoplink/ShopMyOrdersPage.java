@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class ShopMyOrdersPage extends AppCompatActivity {
 
@@ -51,6 +54,22 @@ public class ShopMyOrdersPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //startActivity(new Intent(context, ShopUserProfileView.class));
+            }
+        });
+
+        findViewById(R.id.imgBtnToBarcodeReader).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a new BarCodeScanner instance
+                BarCodeScanner scanner = new BarCodeScanner(ShopMyOrdersPage.this);
+                // Start the scan and handle the result in the callback
+                scanner.startScan(new OnBarcodeScannedListener() {
+                    @Override
+                    public void onBarcodeScanned(String scannedValue) {
+                        EditText editText = findViewById(R.id.edtTxtItemCode);
+                        editText.setText(scannedValue);
+                    }
+                });
             }
         });
 
