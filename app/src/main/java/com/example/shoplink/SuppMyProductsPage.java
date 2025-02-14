@@ -104,6 +104,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SuppMyProductsPage.class));
+                finish();
             }
         });
 
@@ -111,6 +112,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, SuppReceivedAcceptedOrderPage.class));
+                finish();
             }
         });
 
