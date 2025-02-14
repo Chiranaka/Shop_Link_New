@@ -34,13 +34,8 @@ public class LogInPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
 
         linkToReg = findViewById(R.id.txtLinkToRegister);
         context = this;
@@ -61,9 +56,10 @@ public class LogInPage extends AppCompatActivity {
                 } else {
 
                     loginSupplier(email, password);
-
-
+                    if(notsupplier == true)
+                    {
                         loginShop(email, password);
+                    }
 
                 }
             }
