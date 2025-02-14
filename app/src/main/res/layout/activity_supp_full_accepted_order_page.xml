@@ -1,0 +1,408 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightestBlue"
+    tools:context=".SuppFullAcceptedOrderPage">
+
+    <!-- Include Header -->
+    <include
+        android:id="@+id/header"
+        layout="@layout/activity_supplier_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Main Content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/footer">
+
+        <!-- Add your main content here -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/LightestBlue">
+
+            <Button
+                android:id="@+id/btnToViewShopLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="View Shop Location"
+                android:padding="10dp"
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:textStyle="bold"
+                android:backgroundTint="@color/LightBlue"
+                android:foreground="@drawable/border_edit1"
+                app:cornerRadius = "10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView1"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_28pt_extrabold"
+                android:text="Accepted Order"
+                android:textColor="@color/DarkBlue"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imgBtnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:contentDescription="Image button to Back"
+                android:src="@drawable/backicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Order from :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgBtnBack" />
+
+            <TextView
+                android:id="@+id/txtShopName"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="Manju Super Center"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/txtView1"
+                app:layout_constraintTop_toBottomOf="@id/imgBtnBack"/>
+
+            <TextView
+                android:id="@+id/txtView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Reg No :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtShopName" />
+
+            <TextView
+                android:id="@+id/txtRegNo"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="CORA0069"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/txtView2"
+                app:layout_constraintTop_toBottomOf="@id/txtShopName" />
+
+            <TextView
+                android:id="@+id/txtView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Shop Address :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtRegNo" />
+
+            <TextView
+                android:id="@+id/txtShopAddress"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="No 69, Wickremapura, Battaramulla"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/txtView3"
+                app:layout_constraintTop_toBottomOf="@id/txtRegNo"/>
+
+            <TextView
+                android:id="@+id/txtView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Order Reference :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtShopAddress" />
+
+            <TextView
+                android:id="@+id/txtOrdRef"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="Before 04/01/2025"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/txtView4"
+                app:layout_constraintTop_toBottomOf="@id/txtShopAddress" />
+
+            <TextView
+                android:id="@+id/txtView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Order Required Date :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtOrdRef" />
+
+            <TextView
+                android:id="@+id/txtOrdReqDate"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="04/01/2025"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/txtView5"
+                app:layout_constraintTop_toBottomOf="@id/txtOrdRef" />
+
+            <TextView
+                android:id="@+id/txtView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="Order No :"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtOrdReqDate" />
+
+            <TextView
+                android:id="@+id/txtOrderNo"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:hint="ORD001"
+                android:textColor="@color/DarkBlue"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/txtView6"
+                app:layout_constraintTop_toBottomOf="@id/txtOrdReqDate" />
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tblCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                android:minHeight="300dp"
+                android:background="@drawable/custom_edittext"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="20dp"
+                android:alpha="0.85"
+                app:layout_constraintTop_toBottomOf="@id/txtOrderNo">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:minHeight="300dp">
+
+                    <TableLayout
+                        android:id="@+id/orderTblLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:stretchColumns="1,2,3,4,5,6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TableRow>
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_column="1"
+                                android:layout_width="30dp"
+                                android:layout_height="wrap_content"
+                                android:text="Item"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:inputType="textMultiLine"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_column="2"
+                                android:layout_width="30dp"
+                                android:layout_height="wrap_content"
+                                android:text="Sell Price\n(Rs)"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:inputType="textMultiLine"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_column="3"
+                                android:layout_width="25dp"
+                                android:layout_height="wrap_content"
+                                android:text="Available\nQty"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:inputType="textMultiLine"
+                                android:textSize="13sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_column="4"
+                                android:layout_width="20dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="textMultiLine"
+                                android:text="Qty"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_column="5"
+                                android:layout_width="30dp"
+                                android:layout_height="wrap_content"
+                                android:text="Shipping\nFee (Rs)"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:inputType="textMultiLine"
+                                android:textSize="13sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_column="6"
+                                android:layout_width="40dp"
+                                android:layout_height="wrap_content"
+                                android:text="Total\n(Rs)"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:inputType="textMultiLine"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                    </TableLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewOrders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderTblLayout"
+                        app:layout_constraintBottom_toTopOf="@id/textView10"/>
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_28pt_extrabold"
+                        android:text="Order Total (Rs) :"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="14sp"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerViewOrders"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/txtOrdTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_28pt_extrabold"
+                        android:hint="100000.00"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="14sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerViewOrders"
+                        app:layout_constraintStart_toEndOf="@id/textView10"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <Button
+                android:id="@+id/btnCompleteOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Complete Order"
+                android:textSize="18sp"
+                android:textColor="@color/DarkBlue"
+                android:fontFamily="@font/inter_28pt_extrabold"
+                android:backgroundTint="@color/LightBlue"
+                android:foreground="@drawable/border_edit1"
+                app:cornerRadius = "10dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tblCard"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- Include Footer -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/activity_supplier_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
