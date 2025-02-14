@@ -37,7 +37,6 @@ public class SuppMyProductsPage extends AppCompatActivity {
     private ArrayList<ModelProduct> productList;
     private FirebaseFirestore db;
     private Context context;
-    Context context;
 
 //    private void messegePass(String messageName) {
 //
