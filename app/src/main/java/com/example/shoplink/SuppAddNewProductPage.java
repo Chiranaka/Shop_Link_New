@@ -158,6 +158,9 @@ public class SuppAddNewProductPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addProduct();
+
+                Intent intent = new Intent(SuppAddNewProductPage.this, SuppMyProductsPage.class);
+                startActivity(intent);
             }
         });
 
@@ -260,10 +263,31 @@ public class SuppAddNewProductPage extends AppCompatActivity {
             return;
         }
 
-        String productId = db.collection("products").document().getId();
+        String productId = db.collection("products").document().getId().toString();
+
         // Create a storage reference with a unique name based on current time and file extension
-        final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                + "." + getFileExtension(imageUri));
+//        final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
+//                + "." + getFileExtension(imageUri));
+
+        if (imageUri != null) {
+            imgProduct.setImageURI(imageUri); // Display selected image
+            Toast.makeText(this, "Image Selected: " + imageUri.toString(), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error: Image not found!", Toast.LENGTH_SHORT).show();
+        }
+
+        String fileExtension = getFileExtension(imageUri);
+
+        if (fileExtension == null) {
+            Toast.makeText(this, "Invalid file type!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String fileName = System.currentTimeMillis() + "." + fileExtension;
+        StorageReference fileReference = storageRef.child(fileName);
+
+        Toast.makeText(this, "Uploading: " + fileReference.getPath(), Toast.LENGTH_SHORT).show();
+
 
         // Upload the image to Firebase Storage
         fileReference.putFile(imageUri)
@@ -274,6 +298,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                         fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
+                                Toast.makeText(getApplicationContext(), "Image Upload successful!", Toast.LENGTH_SHORT).show();
                                 String downloadUrl = uri.toString();
 
                                 // Create the product model with the image download URL
@@ -289,7 +314,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         downloadUrl,
                                         SproductCode
                                 );
-                                ModelSupplierProduct modelSupplierProduct = new ModelSupplierProduct();
 
                                 // Save the product data in Firestore
                                 db.collection("products")
@@ -307,7 +331,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(context, "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Image upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
 
 
