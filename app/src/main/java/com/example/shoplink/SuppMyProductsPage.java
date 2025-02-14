@@ -75,7 +75,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
         String sn = sharedPreferences.getString("supplierName", "Not Found");
 
-        TextView messageView = (TextView)findViewById(R.id.txtSuppName);
+        TextView messageView = (TextView)findViewById(R.id.txtShopName);
         messageView.setText("Welcome: " + sn);
 
 //        Toast.makeText(this, "Welcome: " + sn, Toast.LENGTH_LONG).show();

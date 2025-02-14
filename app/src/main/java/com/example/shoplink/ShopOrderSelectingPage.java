@@ -1,6 +1,8 @@
 package com.example.shoplink;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,15 @@ public class ShopOrderSelectingPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //******************************************************************************************
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
+        String sn = sharedPreferences.getString("shopName", "Not Found");
+
+        TextView messageView = (TextView)findViewById(R.id.txtSuppName);
+        messageView.setText("Welcome: " + sn);
+
+        //******************************************************************************************
     }
 }
