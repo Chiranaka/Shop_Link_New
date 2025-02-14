@@ -1,5 +1,7 @@
 package com.example.shoplink;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -20,12 +23,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,12 +40,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SuppAddNewProductPage extends AppCompatActivity {
 
     private EditText productName, supplyPrize, maxSellingPrize, ShipFeePerOrder, productQuality, miniQuantity, maxQuantity, description, imageUrl, productCode;
     Context context;
-    private FirebaseFirestore db;
+    FirebaseFirestore db;
     private ImageView imgProduct;
     private Button btntoPickProdImage;
     private Uri imageUri;
@@ -356,6 +365,18 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(context, "Image upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
 
+//                    Map<String, Object> products = new HashMap<>();
+//                    products.put("1", productId);
+//                    products.put("2", SproductName);
+//                    products.put("3", SsupplyPrize);
+//                    products.put("4",SmaxSellingPrize);
+//                    products.put("5", SShipFeePerOrder);
+//                    products.put("6", SproductQuality);
+//                    products.put("7", SminiQuantity);
+//                    products.put("8", SmaxQuantity);
+//                    products.put("9", Sdescription);
+//                    products.put("10",SproductCode);
+
                     // Create the product model with the image download URL
                     ModelProduct modelProduct = new ModelProduct(
                             productId,
@@ -370,11 +391,33 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                             SproductCode
                     );
 
-                    // Save the product data in Firestore
+                    // Add a new document with a generated ID
                     db.collection("products")
-                            .document(productId)
-                            .set(modelProduct)
-                            ;
+                            .add(modelProduct)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Toast.makeText(context, "DocumentSnapshot added with ID: " + documentReference.getId(), Toast.LENGTH_SHORT).show();
+
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error adding document", e);
+                                    Toast.makeText(context, "Error adding document", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+                    // Save the product data in Firestore
+//                    db.collection("products")
+//                            .document(productId)
+//                            .set(modelProduct)
+//                            ;
+
+
                 });
 
 
