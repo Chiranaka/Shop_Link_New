@@ -314,7 +314,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         SminiQuantity,
                                         SmaxQuantity,
                                         Sdescription,
-                                        downloadUrl,
                                         SproductCode
                                 );
 
@@ -335,6 +334,26 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(context, "Image upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    // Create the product model with the image download URL
+                    ModelProduct modelProduct = new ModelProduct(
+                            productId,
+                            SproductName,
+                            SsupplyPrize,
+                            SmaxSellingPrize,
+                            SShipFeePerOrder,
+                            SproductQuality,
+                            SminiQuantity,
+                            SmaxQuantity,
+                            Sdescription,
+                            SproductCode
+                    );
+
+                    // Save the product data in Firestore
+                    db.collection("products")
+                            .document(productId)
+                            .set(modelProduct)
+                            ;
                 });
 
 
