@@ -172,8 +172,7 @@ public class SuppAddNewProductPage extends AppCompatActivity {
             public void onClick(View view) {
                 addProduct();
 
-                Intent intent = new Intent(SuppAddNewProductPage.this, SuppMyProductsPage.class);
-                startActivity(intent);
+
             }
         });
 
@@ -392,13 +391,16 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                     );
 
                     // Add a new document with a generated ID
-                    db.collection("products")
+                    db.collection("products_map")
                             .add(modelProduct)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                     Toast.makeText(context, "DocumentSnapshot added with ID: " + documentReference.getId(), Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(SuppAddNewProductPage.this, SuppMyProductsPage.class);
+                                    startActivity(intent);
 
                                 }
                             })

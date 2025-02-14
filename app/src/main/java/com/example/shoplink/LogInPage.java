@@ -61,10 +61,10 @@ public class LogInPage extends AppCompatActivity {
                 } else {
 
                     loginSupplier(email, password);
-                    if (notsupplier == true){
+
 
                         loginShop(email, password);
-                    }
+
                 }
             }
         });
