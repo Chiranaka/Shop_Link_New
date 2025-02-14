@@ -34,7 +34,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ModelProduct modelProduct = productList.get(position);
         holder.prodCode.setText(modelProduct.getProductCode());
         holder.prodName.setText(modelProduct.getProductName());
-        holder.prodName.setText(modelProduct.getProductCode());
         holder.prodSupplyPrice.setText(modelProduct.getSupplyPrize());
         holder.prodMaxSellPrice.setText(modelProduct.getMaxSellingPrize());
         holder.prodShipPrice.setText(modelProduct.getShipFeePerOrder());
@@ -60,7 +59,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             prodSupplyPrice = itemView.findViewById(R.id.txtSupplyPrice);
             prodMaxSellPrice= itemView.findViewById(R.id.txtMaxSellPrice);
             prodShipPrice = itemView.findViewById(R.id.txtShipFeePerOrder);
-            prodImg = itemView.findViewById(R.id.imgViewItem);
         }
     }
 }
