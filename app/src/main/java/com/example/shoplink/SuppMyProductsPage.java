@@ -38,6 +38,8 @@ public class SuppMyProductsPage extends AppCompatActivity {
     private FirebaseFirestore db;
     private Context context;
 
+
+
 //    private void messegePass(String messageName) {
 //
 //        Intent intent_ = new Intent(this, SupplierHeader.class);
@@ -137,6 +139,8 @@ public class SuppMyProductsPage extends AppCompatActivity {
 
             }
         });
+
+
 
 
         // Set up the RecyclerView
