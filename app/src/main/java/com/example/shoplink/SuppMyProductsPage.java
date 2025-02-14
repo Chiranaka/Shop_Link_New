@@ -71,7 +71,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
         String sn = sharedPreferences.getString("supplierName", "Not Found");
 
-        TextView messageView = (TextView)findViewById(R.id.txtShopName);
+        TextView messageView = (TextView)findViewById(R.id.txtSuppName);
         messageView.setText("Welcome: " + sn);
 
         db = FirebaseFirestore.getInstance();
@@ -97,7 +97,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         recyclerView.setAdapter(productadapter);
 
 
-       // EventChangeListener();
+        // EventChangeListener();
 
         //******************************************************************************************
 
