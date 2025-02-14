@@ -11,26 +11,26 @@ public class ModelProduct {
     private String miniQuantity;
     private String maxQuantity;
     private String description;
-    private String imageUrl;
+    //private String imageUrl;
 
     private String productCode;
 
 
-    public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
-                        String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
-                        String description, String imageUrl, String productCode) {
-        this.productId = productId;
-        this.productName = productName;
-        this.supplyPrize = supplyPrize;
-        this.maxSellingPrize = maxSellingPrize;
-        ShipFeePerOrder = shipFeePerOrder;
-        this.productQuality = productQuality;
-        this.miniQuantity = miniQuantity;
-        this.maxQuantity = maxQuantity;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.productCode = productCode;
-    }
+//    public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
+//                        String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
+//                        String description, String imageUrl, String productCode) {
+//        this.productId = productId;
+//        this.productName = productName;
+//        this.supplyPrize = supplyPrize;
+//        this.maxSellingPrize = maxSellingPrize;
+//        ShipFeePerOrder = shipFeePerOrder;
+//        this.productQuality = productQuality;
+//        this.miniQuantity = miniQuantity;
+//        this.maxQuantity = maxQuantity;
+//        this.description = description;
+//        this.imageUrl = imageUrl;
+//        this.productCode = productCode;
+//    }
 
     public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
                         String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
@@ -39,7 +39,7 @@ public class ModelProduct {
         this.productName = productName;
         this.supplyPrize = supplyPrize;
         this.maxSellingPrize = maxSellingPrize;
-        ShipFeePerOrder = shipFeePerOrder;
+        this.ShipFeePerOrder = shipFeePerOrder;
         this.productQuality = productQuality;
         this.miniQuantity = miniQuantity;
         this.maxQuantity = maxQuantity;
@@ -119,13 +119,13 @@ public class ModelProduct {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+//    public String getImageUrl() {
+//        return imageUrl;
+//    }
+//
+//    public void setImageUrl(String imageUrl) {
+//        this.imageUrl = imageUrl;
+//    }
 
     public String getProductCode() {
         return productCode;

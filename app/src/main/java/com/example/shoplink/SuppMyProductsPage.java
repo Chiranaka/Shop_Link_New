@@ -1,5 +1,7 @@
 package com.example.shoplink;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -25,6 +28,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -42,6 +47,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
     private ProductAdapter productadapter;
     private ArrayList<ModelProduct> productList;
     private FirebaseFirestore db;
+
     ProgressDialog progressDialog;
 
     private Context context;
@@ -58,11 +64,40 @@ public class SuppMyProductsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_supp_my_products_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
+        String sn = sharedPreferences.getString("supplierName", "Not Found");
+
+        TextView messageView = (TextView)findViewById(R.id.txtSuppName);
+        messageView.setText("Welcome: " + sn);
+
+        db = FirebaseFirestore.getInstance();
+
+
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Fetching Data...");
+//        progressDialog.show();
+
+//        Toast.makeText(this, "Welcome: " + sn, Toast.LENGTH_LONG).show();
+        //******************************************************************************************
+        //Recycler view data view codes
+        recyclerView = findViewById(R.id.recyclerViewOrders);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        productList = new ArrayList<ModelProduct>();
+        productadapter = new ProductAdapter(SuppMyProductsPage.this,productList);
+
+        recyclerView.setAdapter(productadapter);
+
+
+       // EventChangeListener();
 
         //******************************************************************************************
 
@@ -72,13 +107,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
 
         //******************************************************************************************
 
-        SharedPreferences sharedPreferences = getSharedPreferences("Prefs", MODE_PRIVATE);
-        String sn = sharedPreferences.getString("supplierName", "Not Found");
 
-        TextView messageView = (TextView)findViewById(R.id.txtSuppName);
-        messageView.setText("Welcome: " + sn);
-
-//        Toast.makeText(this, "Welcome: " + sn, Toast.LENGTH_LONG).show();
 
 //        Intent intent = getIntent();
 //
@@ -163,24 +192,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         });
 
 
-        //******************************************************************************************
-        //Recycler view data view codes
-        recyclerView = findViewById(R.id.recyclerViewOrders);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = FirebaseFirestore.getInstance();
-        productList = new ArrayList<ModelProduct>();
-        productadapter = new ProductAdapter(SuppMyProductsPage.this,productList);
-
-        recyclerView.setAdapter(productadapter);
-
-        EventChangeListener();
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching Data...");
-        progressDialog.show();
 
 
 
@@ -196,28 +208,46 @@ public class SuppMyProductsPage extends AppCompatActivity {
         fetchProductsFromFirestore();*/
     }
 
-    private void EventChangeListener() {
-        db.collection("products")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//    private void EventChangeListener() {
+//        db.collection("products")
+//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                        if(error != null)
+//                        {
+//                            if(progressDialog.isShowing())
+//                                progressDialog.dismiss();
+//                            Log.e("Firestore error ",error.getMessage());
+//                            return;
+//                        }
+//
+//                        for(DocumentChange dc : value.getDocumentChanges()){
+//
+//                            if(dc.getType() == DocumentChange.Type.ADDED){
+//                                productList.add(dc.getDocument().toObject(ModelProduct.class));
+//                            }
+//
+//                            productadapter.notifyDataSetChanged();
+//                            if(progressDialog.isShowing())
+//                                progressDialog.dismiss();
+//                        }
+//                    }
+//                });
+//    }
+
+    private void EventChangeListener(){
+        db.collection("products_map")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null)
-                        {
-                            if(progressDialog.isShowing())
-                                progressDialog.dismiss();
-                            Log.e("Firestore error",error.getMessage());
-                            return;
-                        }
-
-                        for(DocumentChange dc : value.getDocumentChanges()){
-
-                            if(dc.getType() == DocumentChange.Type.ADDED){
-                                productList.add(dc.getDocument().toObject(ModelProduct.class));
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                ModelProduct product = document.toObject(ModelProduct.class);
+                                productList.add(product);
                             }
-
-                            productadapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing())
-                                progressDialog.dismiss();
+                        } else {
+                            Toast.makeText(SuppMyProductsPage.this, "Failed to load products", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
