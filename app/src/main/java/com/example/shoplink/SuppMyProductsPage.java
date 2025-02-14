@@ -38,7 +38,18 @@ public class SuppMyProductsPage extends AppCompatActivity {
     private FirebaseFirestore db;
     private ProgressDialog progressDialog;
     private Context context;
+  
     private ListenerRegistration productListener; // To manage Firestore listener
+
+
+
+
+//    private void messegePass(String messageName) {
+//
+//        Intent intent_ = new Intent(this, SupplierHeader.class);
+//        intent_.putExtra("messageName", messageName);
+//        startActivity(intent_);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +105,20 @@ public class SuppMyProductsPage extends AppCompatActivity {
             finish();
         });
 
-        // RecyclerView setup
+  // RecyclerView setup
+
+        findViewById(R.id.imgBtnToNotifications).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+
+
+
+        // Set up the RecyclerView
         recyclerView = findViewById(R.id.recyclerViewOrders);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

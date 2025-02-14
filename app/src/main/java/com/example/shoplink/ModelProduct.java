@@ -32,6 +32,21 @@ public class ModelProduct {
         this.productCode = productCode;
     }
 
+    public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
+                        String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
+                        String description,String productCode) {
+        this.productId = productId;
+        this.productName = productName;
+        this.supplyPrize = supplyPrize;
+        this.maxSellingPrize = maxSellingPrize;
+        ShipFeePerOrder = shipFeePerOrder;
+        this.productQuality = productQuality;
+        this.miniQuantity = miniQuantity;
+        this.maxQuantity = maxQuantity;
+        this.description = description;
+        this.productCode = productCode;
+    }
+
     public String getProductName() {
         return productName;
     }

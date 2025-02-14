@@ -4,9 +4,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -166,7 +170,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
 
 
 
-
         findViewById(R.id.imgBtnProdQr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +216,24 @@ public class SuppAddNewProductPage extends AppCompatActivity {
         });
 
     }
+
+    public void onBarcodeDetected() {
+        // Play beep sound
+        ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+        toneGen.startTone(ToneGenerator.TONE_PROP_BEEP, 150);
+
+        // Trigger vibration
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                VibrationEffect effect = VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.vibrate(effect);
+            } else {
+                vibrator.vibrate(400);
+            }
+        }
+    }
+
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -314,7 +335,6 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                         SminiQuantity,
                                         SmaxQuantity,
                                         Sdescription,
-                                        downloadUrl,
                                         SproductCode
                                 );
 
@@ -335,6 +355,26 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(context, "Image upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    // Create the product model with the image download URL
+                    ModelProduct modelProduct = new ModelProduct(
+                            productId,
+                            SproductName,
+                            SsupplyPrize,
+                            SmaxSellingPrize,
+                            SShipFeePerOrder,
+                            SproductQuality,
+                            SminiQuantity,
+                            SmaxQuantity,
+                            Sdescription,
+                            SproductCode
+                    );
+
+                    // Save the product data in Firestore
+                    db.collection("products")
+                            .document(productId)
+                            .set(modelProduct)
+                            ;
                 });
 
 
