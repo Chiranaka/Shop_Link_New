@@ -32,6 +32,9 @@ public class ModelProduct {
 //        this.productCode = productCode;
 //    }
 
+    public ModelProduct(){
+
+    }
     public ModelProduct(String productId, String productName, String supplyPrize, String maxSellingPrize,
                         String shipFeePerOrder, String productQuality, String miniQuantity, String maxQuantity,
                         String description,String productCode) {
@@ -46,6 +49,7 @@ public class ModelProduct {
         this.description = description;
         this.productCode = productCode;
     }
+
 
     public String getProductId() {
         return productId;
@@ -133,5 +137,8 @@ public class ModelProduct {
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
+    }
+
+    public void setId(String id) {
     }
 }
