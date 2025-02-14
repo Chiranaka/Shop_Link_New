@@ -125,7 +125,7 @@ public class LogInPage extends AppCompatActivity {
     }
 
     private void loginShop(String email, String password) {
-        database.collection("supplier").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        database.collection("shop").whereEqualTo("email", email).get().addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         for (DocumentSnapshot document : queryDocumentSnapshots) {
                             String storedPassword = document.getString("password");
@@ -133,20 +133,22 @@ public class LogInPage extends AppCompatActivity {
                             if (storedPassword != null && storedPassword.equals(password)) {
                                 Toast.makeText(LogInPage.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
-                                Intent intentB = new Intent(this, SuppMyProductsPage.class);
+                                Intent intentShop = new Intent(this, ShopOrderSelectingPage.class);
 
 
-                                String storedname = document.getString("businessName");
+                                String storedname = document.getString("shopName");
 
                                 //intentB.putExtra("messageName","Welcome "+storedname);
                                 //intentB.putExtra("messageEmail",email);
 
                                // startActivity(intent);
-                                startActivity(intentB);
 
-                                Intent intent = new Intent(this, ShopHeader.class);
+                                SharedPreferences sp = getSharedPreferences("Prefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("shopName", storedname);
+                                editor.apply();
 
-                                startActivity(intent);
+                                startActivity(intentShop);
                                 finish();
 
 
