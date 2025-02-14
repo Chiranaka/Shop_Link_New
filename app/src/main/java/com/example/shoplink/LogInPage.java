@@ -107,6 +107,7 @@ public class LogInPage extends AppCompatActivity {
 
 
                                 startActivity(intentSPP);
+                                finish();
 
 
                             } else {
@@ -146,6 +147,7 @@ public class LogInPage extends AppCompatActivity {
                                 Intent intent = new Intent(this, ShopHeader.class);
 
                                 startActivity(intent);
+                                finish();
 
 
 
