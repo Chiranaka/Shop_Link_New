@@ -141,7 +141,6 @@ public class SuppMyProductsPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
         productList = new ArrayList<ModelProduct>();
         productadapter = new ProductAdapter(SuppMyProductsPage.this,productList);
 
