@@ -50,7 +50,7 @@ public class ShopMyOrdersPage extends AppCompatActivity {
         findViewById(R.id.imgBtnToUserAcc).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(context, ShopUserProfileView.class));
+                startActivity(new Intent(context, ShopUserProfileView.class));
             }
         });
 
