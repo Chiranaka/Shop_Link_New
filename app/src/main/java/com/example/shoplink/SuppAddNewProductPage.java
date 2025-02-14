@@ -301,8 +301,11 @@ public class SuppAddNewProductPage extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Image Upload successful!", Toast.LENGTH_SHORT).show();
                                 String downloadUrl = uri.toString();
 
+                                // Generate a unique supplier ID
+                                String productId = db.collection("product").document().getId();
                                 // Create the product model with the image download URL
                                 ModelProduct modelProduct = new ModelProduct(
+                                        productId,
                                         SproductName,
                                         SsupplyPrize,
                                         SmaxSellingPrize,
