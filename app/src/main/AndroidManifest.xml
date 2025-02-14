@@ -29,6 +29,9 @@
             android:value="barcode_ui" />
 
         <activity
+            android:name=".ShopUserProfileView"
+            android:exported="false" />
+        <activity
             android:name=".ShopMyOrdersPage"
             android:exported="false" />
         <activity
