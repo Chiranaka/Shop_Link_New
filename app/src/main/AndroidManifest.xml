@@ -22,12 +22,15 @@
         android:theme="@style/Theme.ShopLink"
         tools:targetApi="31">
         <activity
+            android:name=".ShopMyOrdersPage"
+            android:exported="false" />
+        <activity
+            android:name=".ShopOrderConfirmPage"
+            android:exported="false" />
+        <activity
             android:name=".ShopOrderSelectingPage"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.mlkit.vision.DEPENDENCIES"
-            android:value="barcode_ui" />
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode_ui" />
