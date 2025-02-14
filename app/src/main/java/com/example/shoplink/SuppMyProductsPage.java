@@ -19,9 +19,24 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuppMyProductsPage extends AppCompatActivity {
 
+    private Button buttonAddNewProduct;
+    private RecyclerView recyclerView;
+    private ProductAdapter adapter;
+    private ArrayList<ModelProduct> productList;
+    private FirebaseFirestore db;
+    private Context context;
     Context context;
 
 //    private void messegePass(String messageName) {
@@ -56,7 +71,7 @@ public class SuppMyProductsPage extends AppCompatActivity {
         TextView messageView = (TextView)findViewById(R.id.txtSuppName);
         messageView.setText("Welcome: " + sn);
 
-        Toast.makeText(this, "Welcome: " + sn, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Welcome: " + sn, Toast.LENGTH_LONG).show();
 
 //        Intent intent = getIntent();
 //
@@ -120,6 +135,37 @@ public class SuppMyProductsPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+            }
+        });
+
+
+        // Set up the RecyclerView
+        recyclerView = findViewById(R.id.recyclerViewOrders);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        productList = new ArrayList<>();
+        adapter = new ProductAdapter(this, productList);
+        recyclerView.setAdapter(adapter);
+
+        db = FirebaseFirestore.getInstance();
+
+        fetchProductsFromFirestore();
+    }
+    private void fetchProductsFromFirestore() {
+        CollectionReference productsRef = db.collection("Products");
+
+        productsRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                productList.clear(); // Clear existing data
+
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    ModelProduct product = document.toObject(ModelProduct.class);
+                    productList.add(product);
+                }
+
+                adapter.notifyDataSetChanged(); // Refresh RecyclerView
+            } else {
+                Toast.makeText(SuppMyProductsPage.this, "Failed to load products", Toast.LENGTH_SHORT).show();
             }
         });
 

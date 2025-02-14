@@ -38,6 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.prodSupplyPrice.setText(modelProduct.getSupplyPrize());
         holder.prodMaxSellPrice.setText(modelProduct.getMaxSellingPrize());
         holder.prodShipPrice.setText(modelProduct.getShipFeePerOrder());
+        holder.prodImg.setImageResource(Integer.parseInt(modelProduct.getImageUrl()));
     }
 
     @Override
@@ -52,12 +53,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
+
             prodCode = itemView.findViewById(R.id.txtProductCode);
             prodName = itemView.findViewById(R.id.txtProductName);
             prodImg = itemView.findViewById(R.id.imgViewItem);
             prodSupplyPrice = itemView.findViewById(R.id.txtSupplyPrice);
             prodMaxSellPrice= itemView.findViewById(R.id.txtMaxSellPrice);
             prodShipPrice = itemView.findViewById(R.id.txtShipFeePerOrder);
+            prodImg = itemView.findViewById(R.id.imgViewItem);
         }
     }
 }
