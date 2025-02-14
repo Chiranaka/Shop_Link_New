@@ -123,5 +123,23 @@ public class SuppMyProductsPage extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.imgBtnLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Clear saved login session
+                SharedPreferences sp = getSharedPreferences("Prefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear(); // Remove all saved data
+                editor.apply();
+
+                // Redirect to Login Activity
+                Intent intent = new Intent(context, LogInPage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear activity stack
+                startActivity(intent);
+                finish(); // Close current activity
+            }
+        });
+
+
     }
 }
