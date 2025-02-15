@@ -57,21 +57,6 @@ public class ShopMyOrdersPage extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.imgBtnToBarcodeReader).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create a new BarCodeScanner instance
-                BarCodeScanner scanner = new BarCodeScanner(ShopMyOrdersPage.this);
-                // Start the scan and handle the result in the callback
-                scanner.startScan(new OnBarcodeScannedListener() {
-                    @Override
-                    public void onBarcodeScanned(String scannedValue) {
-                        EditText editText = findViewById(R.id.edtTxtItemCode);
-                        editText.setText(scannedValue);
-                    }
-                });
-            }
-        });
 
         findViewById(R.id.imgBtnLogout).setOnClickListener(new View.OnClickListener() {
             @Override
