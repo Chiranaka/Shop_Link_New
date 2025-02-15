@@ -1,10 +1,19 @@
 package com.example.shoplink;
 
+import static android.content.Context.VIBRATOR_MANAGER_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.OptionalModuleApi;
@@ -21,6 +30,36 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
 public class BarCodeScanner {
 
+    Context context;
+
+    private Vibrator vibrator;
+
+    public void onBarcodeDetected() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) { // Android 12 / API 31
+            VibratorManager vibratorManager = (VibratorManager) context.getSystemService(context.VIBRATOR_MANAGER_SERVICE);
+            if (vibratorManager != null) {
+                vibrator = vibratorManager.getDefaultVibrator();
+            }
+        } else {
+            vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        }
+//        // Play beep sound
+//
+       ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+       toneGen.startTone(ToneGenerator.TONE_PROP_BEEP, 150);
+//
+        // Trigger vibration
+        if (vibrator != null && vibrator.hasVibrator()) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                VibrationEffect effect = VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.vibrate(effect);
+            } else {
+                vibrator.vibrate(400);
+            }
+        }
+    }
+
 
 
     public String getValue() {
@@ -33,7 +72,6 @@ public class BarCodeScanner {
 
     public String qrvalue;
 
-    private final Context context;
 
 //    static final class ModuleInstallProgressListener implements InstallStatusListener {
 //        private Context context;
@@ -103,6 +141,7 @@ public class BarCodeScanner {
                     String scannedValue = barcode.getRawValue();
 
                     Toast.makeText(context, "QR code detected", Toast.LENGTH_SHORT).show();
+                    onBarcodeDetected();
                     setValue(scannedValue);
 
                     listener.onBarcodeScanned(scannedValue);}).addOnFailureListener(e -> {
