@@ -7,11 +7,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.OptionalModuleApi;
 import com.google.android.gms.common.moduleinstall.InstallStatusListener;
 import com.google.android.gms.common.moduleinstall.ModuleInstall;
 import com.google.android.gms.common.moduleinstall.ModuleInstallClient;
 import com.google.android.gms.common.moduleinstall.ModuleInstallRequest;
 import com.google.android.gms.common.moduleinstall.ModuleInstallStatusUpdate;
+import com.google.android.gms.tflite.java.TfLite;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions;
@@ -106,23 +108,62 @@ public class BarCodeScanner {
                     listener.onBarcodeScanned(scannedValue);}).addOnFailureListener(e -> {
                     Toast.makeText(context, "Scanning failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    ModuleInstallClient moduleInstallClient = ModuleInstall.getClient(context);
-                    ModuleInstallRequest request = ModuleInstallRequest.newBuilder()
-                            .addApi(GmsBarcodeScanning.getClient(context))
-                            .build();
+                    ModuleInstallClient moduleInstallClientnew = ModuleInstall.getClient(context);
+                    OptionalModuleApi optionalModuleApi = TfLite.getClient(context);
+                    moduleInstallClientnew
+                            .areModulesAvailable(optionalModuleApi)
+                            .addOnSuccessListener(
+                                    response -> {
+                                        if (response.areModulesAvailable()) {
+                                            // Modules are present on the device...
+                                        } else {
 
-                    moduleInstallClient.installModules(request)
-                            .addOnSuccessListener(response -> {
-                                if (response.areModulesAlreadyInstalled()) {
-                                    scanner.startScan();
-                                } else {
-                                    // Optionally, wait briefly before starting the scan.
-                                    new Handler(Looper.getMainLooper()).postDelayed(() -> startScan(listener), 1000);
-                                }
-                            })
-                            .addOnFailureListener(ee -> {
-                                Toast.makeText(context, "Module install failed: " + ee.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
+                                            OptionalModuleApi optionalModuleApi1 = TfLite.getClient(context);
+                                            ModuleInstallRequest moduleInstallRequest =
+                                                    ModuleInstallRequest.newBuilder()
+                                                            .addApi(optionalModuleApi1)
+                                                            // Add more API if you would like to request multiple optional modules
+                                                            //.addApi(...)
+                                                            // Set the listener if you need to monitor the download progress
+                                                            //.setListener(listener)
+                                                            .build();
+                                            ModuleInstallClient moduleInstallClient = ModuleInstall.getClient(context);
+                                            moduleInstallClient.installModules(moduleInstallRequest)
+                                                    .addOnSuccessListener(
+                                                            response1 -> {
+                                                                if (response1.areModulesAlreadyInstalled()) {
+                                                                    // Modules are already installed when the request is sent.
+                                                                }
+                                                            })
+                                                    .addOnFailureListener(
+                                                            e1 -> {
+                                                                // Handle failure...
+                                                            });
+                                            // Modules are not present on the device...
+                                        }
+                                    })
+                            .addOnFailureListener(
+                                    e1 -> {
+                                        // Handle failure…
+                                    });
+
+//                    ModuleInstallClient moduleInstallClient = ModuleInstall.getClient(context);
+//                    ModuleInstallRequest request = ModuleInstallRequest.newBuilder()
+//                            .addApi(GmsBarcodeScanning.getClient(context))
+//                            .build();
+//
+//                    moduleInstallClient.installModules(request)
+//                            .addOnSuccessListener(response -> {
+//                                if (response.areModulesAlreadyInstalled()) {
+//                                    scanner.startScan();
+//                                } else {
+//                                    // Optionally, wait briefly before starting the scan.
+//                                    new Handler(Looper.getMainLooper()).postDelayed(() -> startScan(listener), 1000);
+//                                }
+//                            })
+//                            .addOnFailureListener(ee -> {
+//                                Toast.makeText(context, "Module install failed: " + ee.getMessage(), Toast.LENGTH_SHORT).show();
+//                            });
 
 
 
